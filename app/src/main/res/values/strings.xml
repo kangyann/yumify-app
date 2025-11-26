@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Yumify</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="main_header_text">Login</string>
+</resources>
