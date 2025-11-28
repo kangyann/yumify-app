@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary"
-    tools:context=".MainActivity">
+    android:background="@color/primary">
 
     <ImageView
         android:id="@+id/ImageHomeIcon"
@@ -25,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_bold"
-        android:text="@string/login_title"
+        android:text="@string/title"
         android:layout_marginTop="16dp"
         android:textAlignment="center"
         android:textSize="36sp"
@@ -56,12 +55,8 @@
         android:orientation="vertical"
         android:padding="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.6"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1">
+        >
 
         <TextView
             android:layout_width="match_parent"

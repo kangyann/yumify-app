@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Yumify</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="welcome_back">Selamat Datang kembali.</string>
     <!-- HomeScreen Strings   -->
-    <string name="login_title">YUMIFY</string>
+    <string name="title">YUMIFY</string>
     <string name="login_description">Masuk terlebih dahulu untuk melakukan transaksi</string>
     <string name="login_alt_image">yumify_icon</string>
     <string name="login_label_title">MASUK</string>

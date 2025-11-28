@@ -24,10 +24,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    //---
+
         buttonLogin = findViewById(R.id.buttonLogin);
-        buttonLogin.setOnClickListener(view -> {
-            Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show();
+        buttonLogin.setOnClickListener(v -> {
+            Toast.makeText(this, "Test! Button Click", Toast.LENGTH_SHORT).show();
         });
+    //---
     }
 }
