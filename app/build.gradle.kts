@@ -37,8 +37,8 @@ android {
         compose = true
     }
 }
-
 dependencies {
+    implementation("androidx.core:core-splashscreen:1.2.0")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

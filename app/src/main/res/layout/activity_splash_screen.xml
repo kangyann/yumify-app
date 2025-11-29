@@ -42,6 +42,7 @@
 
         <ImageView
             android:id="@+id/iconLocation"
+            android:contentDescription="@string/login_alt_image"
             android:layout_width="wrap_content"
             android:layout_marginTop="48dp"
             android:layout_height="74dp"
