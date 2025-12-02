@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Yumify</string>
+    <string name="alt_icon_splashscreen">splash_screen_icon</string>
+    <string name="welcome_back">おかえり。</string>
+    <!-- HomeScreen Strings   -->
+    <string name="title">YUMIFY</string>
+    <string name="login_description">取引を行うにはまずログインしてください</string>
+    <string name="login_alt_image">yumify_icon</string>
+    <string name="login_label_title">入力</string>
+    <string name="login_label_username">ユーザー名</string>
+    <string name="login_label_password">パスワード</string>
+    <string name="login_button_text">続く</string>
+    <string name="login_username_hint">ユーザー名を入力してください</string>
+    <string name="login_password_hint">パスワードを入力してください</string>
+</resources>

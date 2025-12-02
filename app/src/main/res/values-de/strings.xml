@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Yumify</string>
+    <string name="alt_icon_splashscreen">splash_screen_icon</string>
+    <string name="welcome_back">Бзиала шәаабеит.</string>
+    <!-- HomeScreen Strings   -->
+    <string name="title">YUMIFY</string>
+    <string name="login_description">Атранзакциа амҩаԥгаразы раԥхьа шәҭал</string>
+    <string name="login_alt_image">yumify_icon</string>
+    <string name="login_label_title">АҨНАЛАРА</string>
+    <string name="login_label_username">Ахархәаҩ ихьӡ</string>
+    <string name="login_label_password">Апароль</string>
+    <string name="login_button_text">Ацҵара</string>
+    <string name="login_username_hint">Иҭажәгал ухы иаурхәо ахьӡ</string>
+    <string name="login_password_hint">Иҭажәгал шәмаӡажәа</string>
+</resources>

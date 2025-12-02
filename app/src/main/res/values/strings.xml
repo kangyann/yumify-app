@@ -1,15 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Yumify</string>
-    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="alt_icon_splashscreen">splash_screen_icon</string>
     <string name="welcome_back">Selamat Datang kembali.</string>
     <!-- HomeScreen Strings   -->
     <string name="title">YUMIFY</string>
     <string name="login_description">Masuk terlebih dahulu untuk melakukan transaksi</string>
     <string name="login_alt_image">yumify_icon</string>
     <string name="login_label_title">MASUK</string>
-    <string name="login_label_username">Username</string>
-    <string name="login_label_password">Password</string>
+    <string name="login_label_username">Nama Pengguna</string>
+    <string name="login_label_password">Kata Sandi</string>
     <string name="login_button_text">Lanjutkan</string>
-    <string name="login_username_hint">Masukan username anda</string>
-    <string name="login_password_hint">Masukan password anda</string>
+    <string name="login_username_hint">Masukan nama pengguna anda</string>
+    <string name="login_password_hint">Masukan kata sandi anda</string>
 </resources>

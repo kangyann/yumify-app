@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Yumify</string>
+    <string name="alt_icon_splashscreen">splash_screen_icon</string>
+    <string name="welcome_back">Добро пожаловать.</string>
+    <!-- HomeScreen Strings   -->
+    <string name="title">YUMIFY</string>
+    <string name="login_description">Сначала войдите в систему, чтобы совершить транзакцию</string>
+    <string name="login_alt_image">yumify_icon</string>
+    <string name="login_label_title">ВХОДИТЬ</string>
+    <string name="login_label_username">Имя пользователя</string>
+    <string name="login_label_password">Пароль</string>
+    <string name="login_button_text">Продолжать</string>
+    <string name="login_username_hint">Введите ваше имя пользователя</string>
+    <string name="login_password_hint">Введите ваш пароль</string>
+</resources>

@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Yumify</string>
-    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="alt_icon_splashscreen">splash_screen_icon</string>
     <string name="welcome_back">Welcome Back.</string>
     <!-- HomeScreen Strings   -->
     <string name="title">YUMIFY</string>
