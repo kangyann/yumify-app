@@ -3,7 +3,7 @@
     <string name="app_name">Yumify</string>
     <string name="alt_icon_splashscreen">splash_screen_icon</string>
     <string name="welcome_back">Selamat Datang kembali.</string>
-    <!-- HomeScreen Strings   -->
+    <!-- Login Strings   -->
     <string name="title">YUMIFY</string>
     <string name="login_description">Masuk terlebih dahulu untuk melakukan transaksi</string>
     <string name="login_alt_image">yumify_icon</string>
@@ -13,4 +13,6 @@
     <string name="login_button_text">Lanjutkan</string>
     <string name="login_username_hint">Masukan nama pengguna anda</string>
     <string name="login_password_hint">Masukan kata sandi anda</string>
+    <!-- Home Strings   -->
+    <string name="home_welcome">Selamat Datang ! {user}</string>
 </resources>

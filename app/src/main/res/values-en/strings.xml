@@ -3,7 +3,7 @@
     <string name="app_name">Yumify</string>
     <string name="alt_icon_splashscreen">splash_screen_icon</string>
     <string name="welcome_back">Welcome Back.</string>
-    <!-- HomeScreen Strings   -->
+    <!-- Login Strings   -->
     <string name="title">YUMIFY</string>
     <string name="login_description">Log in first to make a transaction</string>
     <string name="login_alt_image">yumify_icon</string>
@@ -13,4 +13,6 @@
     <string name="login_button_text">Next</string>
     <string name="login_username_hint">Enter your username</string>
     <string name="login_password_hint">Enter your password</string>
+    <!-- Home Strings   -->
+    <string name="home_welcome">Welcome! {user}</string>
 </resources>
