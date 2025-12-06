@@ -93,6 +93,10 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, responseText, Toast.LENGTH_SHORT).show()) ;
                 if (response.code() == 200) {
                     Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+
+                    SharedPreferences prefs = getSharedPreferences("APP_AUTH", MODE_PRIVATE);
+                    prefs.edit().putString("user",result).apply();
+
                     startActivity(intent);
                     finish();
                 }

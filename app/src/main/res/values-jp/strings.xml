@@ -14,5 +14,6 @@
     <string name="login_username_hint">ユーザー名を入力してください</string>
     <string name="login_password_hint">パスワードを入力してください</string>
     <!-- Home Strings   -->
-    <string name="home_welcome">ようこそ！{user}</string>
+    <string name="home_welcome">こんにちは、ようこそ！</string>
+    <string name="home_user_variable">{user}</string>
 </resources>

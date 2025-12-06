@@ -14,5 +14,6 @@
     <string name="login_username_hint">Enter your username</string>
     <string name="login_password_hint">Enter your password</string>
     <!-- Home Strings   -->
-    <string name="home_welcome">Welcome! {user}</string>
+    <string name="home_welcome">Hi, Welcome!</string>
+    <string name="home_user_variable">{user}</string>
 </resources>

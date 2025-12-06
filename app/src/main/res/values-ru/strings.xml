@@ -14,5 +14,6 @@
     <string name="login_username_hint">Введите ваше имя пользователя</string>
     <string name="login_password_hint">Введите ваш пароль</string>
     <!-- Home Strings   -->
-    <string name="home_welcome">Добро пожаловать! {пользователь}</string>
+    <string name="home_welcome">Привет, добро пожаловать!</string>
+    <string name="home_user_variable">{user}</string>
 </resources>

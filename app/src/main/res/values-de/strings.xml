@@ -14,5 +14,6 @@
     <string name="login_username_hint">Иҭажәгал ухы иаурхәо ахьӡ</string>
     <string name="login_password_hint">Иҭажәгал шәмаӡажәа</string>
     <!-- Home Strings   -->
-    <string name="home_welcome">Willkommen! {user}</string>
+    <string name="home_welcome">Hallo und herzlich willkommen!</string>
+    <string name="home_user_variable">{user}</string>
 </resources>

@@ -14,5 +14,6 @@
     <string name="login_username_hint">Masukan nama pengguna anda</string>
     <string name="login_password_hint">Masukan kata sandi anda</string>
     <!-- Home Strings   -->
-    <string name="home_welcome">Selamat Datang ! {user}</string>
+    <string name="home_welcome">Hai, Selamat Datang !</string>
+    <string name="home_user_variable">{user}</string>
 </resources>
