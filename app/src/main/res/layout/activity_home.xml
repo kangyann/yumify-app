@@ -28,16 +28,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-                android:id="@+id/textView"
+                android:id="@+id/labelSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/home_label_search" />
                 <EditText
-                    android:id="@+id/editTextText"
+                    android:id="@+id/inputSearchProduct"
                     android:layout_width="match_parent"
                     android:layout_marginEnd="8dp"
+                    android:maxWidth="40dp"
                     android:layout_marginTop="4dp"
-                    android:layout_height="32dp"
+                    android:layout_height="48dp"
+                    android:hint="@string/home_search_hint"
+                    android:importantForAutofill="no"
                     android:ems="10"
                     android:textSize="14sp"
                     android:inputType="text"
@@ -48,10 +51,116 @@
                 android:layout_gravity="bottom"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
+                android:contentDescription="@string/home_cart_image_description"
                 android:src="@drawable/carticon"/>
 
         </LinearLayout>
         <include layout="@layout/component_grid_product"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/popupAddToCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@drawable/background_top_radius_border"
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingVertical="8dp"
+            android:textSize="18sp"
+            android:textColor="@color/primary"
+            android:fontFamily="@font/inter_bold"
+            android:textAlignment="center"
+            android:background="@drawable/border_bottom"
+            android:text="@string/home_popup_title"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/border_bottom"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="92dp"
+                android:layout_height="92dp"
+                android:contentDescription="@string/home_popup_image_description"
+                android:src="@drawable/germany"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingHorizontal="8dp"
+                android:layout_gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_bold"
+                    android:textColor="@color/primary"
+                    android:textSize="18sp"
+                    android:text="@string/home_popup_product_name"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/primary"
+                    android:textSize="14sp"
+                    android:text="@string/home_popup_product_price"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/inter_regular"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_popup_product_qty"/>
+                    <TextView
+                        android:id="@+id/buttonMin"
+                        android:layout_width="40dp"
+                        android:layout_height="28dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_primary"
+                        android:text="@string/home_popup_button_min"
+                        android:layout_marginHorizontal="8dp"
+                        android:fontFamily="@font/inter_bold"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:id="@+id/buttonPlus"
+                        android:layout_width="40dp"
+                        android:layout_height="28dp"
+                        android:gravity="center"
+                        android:background="@drawable/button_primary"
+                        android:text="@string/home_popup_button_plus"
+                        android:fontFamily="@font/inter_bold"
+                        android:textColor="@color/white"
+                        android:clickable="true"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/home_popup_total_price"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/inter_bold"
+            android:background="@drawable/button_primary"
+            android:text="@string/home_popup_button_add_product"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

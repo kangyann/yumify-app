@@ -16,6 +16,7 @@
         android:theme="@style/Theme.Yumify">
         <activity android:name=".LoginActivity"/>
         <activity android:name=".HomeActivity"/>
+        <activity android:name=".CartActivity"/>
         <activity
             android:name=".SplashActivity"
             android:exported="true">

@@ -16,4 +16,22 @@
     <!-- Home Strings   -->
     <string name="home_welcome">Hallo und herzlich willkommen!</string>
     <string name="home_user_variable">{user}</string>
+    <string name="home_label_search">Hier finden Sie, was Sie brauchen.</string>
+    <!-- Cart Strings  -->
+    <string name="cart_title">RINCIAN PESANAN</string>
+    <string name="cart_title_label">Nachfolgend finden Sie die Details Ihrer Bestellung.</string>
+    <string name="cart_product_name">{product_name}</string>
+    <string name="cart_index">1.</string>
+    <string name="cart_product_price">{product_price}</string>
+    <string name="cart_product_qty">{product_qty}</string>
+    <string name="cart_image_product_description">product_name</string>
+    <string name="cart_image_remove_description">remove_icon</string>
+    <string name="cart_choose_payment">Zahlungsmethode auswählen</string>
+    <string name="cart_total_payment">Gesamtkaufbetrag: Rp. 10.000,00</string>
+    <string name="cart_button_next_payment">Zahlung fortsetzen</string>
+    <string-array name="cart_selection_payment">
+        <item>QRIS</item>
+        <item>BCA VA</item>
+        <item>MANDIRI VA</item>
+    </string-array>
 </resources>

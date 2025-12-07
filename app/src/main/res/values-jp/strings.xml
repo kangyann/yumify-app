@@ -16,4 +16,22 @@
     <!-- Home Strings   -->
     <string name="home_welcome">こんにちは、ようこそ！</string>
     <string name="home_user_variable">{user}</string>
+    <string name="home_label_search">必要なものはここで見つかります</string>
+    <!-- Cart Strings  -->
+    <string name="cart_title">注文の詳細</string>
+    <string name="cart_title_label">ご購入いただく注文の詳細は以下の通りです。</string>
+    <string name="cart_product_name">{product_name}</string>
+    <string name="cart_index">1.</string>
+    <string name="cart_product_price">{product_price}</string>
+    <string name="cart_product_qty">{product_qty}</string>
+    <string name="cart_image_product_description">product_name</string>
+    <string name="cart_image_remove_description">remove_icon</string>
+    <string name="cart_choose_payment">支払い方法を選択</string>
+    <string name="cart_total_payment">合計購入金額: Rp. 10,000.00</string>
+    <string name="cart_button_next_payment">支払いを続ける</string>
+    <string-array name="cart_selection_payment">
+        <item>QRIS</item>
+        <item>BCA VA</item>
+        <item>MANDIRI VA</item>
+    </string-array>
 </resources>
