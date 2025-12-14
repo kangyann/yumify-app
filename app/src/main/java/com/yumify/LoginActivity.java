@@ -29,6 +29,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        SharedPreferences prefsAuth = getSharedPreferences("APP_AUTH", MODE_PRIVATE);
+        String user = prefsAuth.getString("user", null);
+
+        if(user != null && !user.isEmpty()) {
+            Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         EdgeToEdge.enable(this);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -49,8 +58,8 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            SharedPreferences prefs = getSharedPreferences("APP_LANGUAGE", MODE_PRIVATE);
-            String language = prefs.getString("lang", null);
+            SharedPreferences prefsLanguage = getSharedPreferences("APP_LANGUAGE", MODE_PRIVATE);
+            String language = prefsLanguage.getString("lang", null);
 
             LoginApi(get_user_value,get_pass_value,language);
         });

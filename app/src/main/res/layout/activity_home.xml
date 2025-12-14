@@ -11,14 +11,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteX="24dp"
         tools:layout_editor_absoluteY="159dp">
         <include layout="@layout/component_navigation" />
 
         <LinearLayout
             android:layout_marginTop="12dp"
+            android:paddingVertical="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:baselineAligned="false"
             android:paddingHorizontal="24dp"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal">
@@ -38,7 +40,7 @@
                     android:layout_marginEnd="8dp"
                     android:maxWidth="40dp"
                     android:layout_marginTop="4dp"
-                    android:layout_height="48dp"
+                    android:layout_height="38dp"
                     android:hint="@string/home_search_hint"
                     android:importantForAutofill="no"
                     android:ems="10"
@@ -46,15 +48,31 @@
                     android:inputType="text"
                     android:background="@drawable/input_border"/>
             </LinearLayout>
-            <ImageView
-                android:id="@+id/cartIcon"
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:contentDescription="@string/home_cart_image_description"
-                android:src="@drawable/carticon"/>
+                >
+                <ImageView
+                    android:id="@+id/cartIcon"
+                    android:layout_gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/home_cart_image_description"
+                    android:src="@drawable/carticon"/>
 
+                <!-- Icon absolute -->
+                <TextView
+                    android:id="@+id/cartIcon_item"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:background="@drawable/background_rounded"
+                    android:text="1" />
+            </FrameLayout>
         </LinearLayout>
+
         <include layout="@layout/component_grid_product"/>
 
     </LinearLayout>
@@ -65,7 +83,8 @@
         android:orientation="vertical"
         android:visibility="gone"
         android:background="@drawable/background_top_radius_border"
-        android:padding="24dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="32dp"
         app:layout_constraintBottom_toBottomOf="parent">
         <TextView
             android:layout_width="match_parent"
@@ -81,21 +100,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginVertical="8dp"
+            android:paddingHorizontal="6dp"
+            android:paddingBottom="24dp"
             android:background="@drawable/border_bottom"
             android:orientation="horizontal">
             <ImageView
+                android:id="@+id/popup_productImage"
                 android:layout_width="92dp"
                 android:layout_height="92dp"
                 android:contentDescription="@string/home_popup_image_description"
-                android:src="@drawable/germany"/>
+                android:src="@android:drawable/picture_frame"/>
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:paddingHorizontal="8dp"
                 android:layout_gravity="center_vertical">
                 <TextView
+                    android:id="@+id/popup_productName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_bold"
@@ -103,6 +126,7 @@
                     android:textSize="18sp"
                     android:text="@string/home_popup_product_name"/>
                 <TextView
+                    android:id="@+id/popup_productPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_regular"
@@ -111,9 +135,10 @@
                     android:text="@string/home_popup_product_price"/>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/popup_productQty"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_gravity="center"
@@ -127,34 +152,41 @@
                         android:layout_width="40dp"
                         android:layout_height="28dp"
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:background="@drawable/button_primary"
                         android:text="@string/home_popup_button_min"
                         android:layout_marginHorizontal="8dp"
                         android:fontFamily="@font/inter_bold"
                         android:textColor="@color/white"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:textSize="18sp"/>
                     <TextView
                         android:id="@+id/buttonPlus"
                         android:layout_width="40dp"
                         android:layout_height="28dp"
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:background="@drawable/button_primary"
                         android:text="@string/home_popup_button_plus"
                         android:fontFamily="@font/inter_bold"
                         android:textColor="@color/white"
                         android:clickable="true"
+                        android:focusable="true"
                         android:textSize="18sp"/>
                 </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
         <TextView
+            android:id="@+id/popup_totalPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/primary"
             android:fontFamily="@font/inter_regular"
             android:text="@string/home_popup_total_price"/>
         <Button
+            android:id="@+id/popup_addToCart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
