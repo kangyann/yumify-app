@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.gridlayout.widget.GridLayout;
 
@@ -27,6 +28,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import okhttp3.Call;
@@ -38,6 +41,13 @@ import okhttp3.Response;
 public class HomeActivity extends AppCompatActivity {
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        TextView cartIconItem = findViewById(R.id.cartIcon_item);
+        LoadCartItem(cartIconItem);
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -46,9 +56,10 @@ public class HomeActivity extends AppCompatActivity {
         TextView labelUsername = findViewById(R.id.variable_user);
         ImageView profileIcon = findViewById(R.id.profileIcon);
         ImageView cartIcon = findViewById(R.id.cartIcon);
+
         LinearLayout popupAddToCart = findViewById(R.id.popupAddToCart);
+        popupAddToCart.bringToFront();
         ConstraintLayout Home = findViewById(R.id.home);
-        TextView cartIconItem = findViewById(R.id.cartIcon_item);
 
         // Event Clicked for cartIcon.
         cartIcon.setOnClickListener(v -> {
@@ -58,13 +69,14 @@ public class HomeActivity extends AppCompatActivity {
 
         // Event Clicked for profileIcon.
         profileIcon.setOnClickListener(v -> {
-            Log.d("HOMEPAGE","Profile Clicked");
-            //Need Redirect to Profile page
+            Intent intent = new Intent(HomeActivity.this,ProfileActivity.class);
+            startActivity(intent);
         });
 
         // Get Products
         getProduct();
-        LoadCartItem(cartIconItem);
+//        getPayments();
+
         // Get User
         JSONObject user = LoadUser();
         labelUsername.setText(user.optString("username"));
@@ -81,6 +93,7 @@ public class HomeActivity extends AppCompatActivity {
     public void LoadCartItem(TextView item) {
         SharedPreferences prefs = getSharedPreferences("APP_CART", MODE_PRIVATE);
         String cart = prefs.getString("products", "[]");
+        Log.d("HOMEACTIVITY", cart);
         try {
             JSONArray products = new JSONArray(cart);
             if(products.length() > 0){
@@ -93,6 +106,41 @@ public class HomeActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
     }
+    public void getPayments() {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .get()
+                .url("https://yumify-api.vercel.app/api/payments").build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e("PAYMENTS", "ERROR FETCHING PAYMENTS." + e);
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                String body = response.body().string();
+                try {
+                    JSONObject responseJson = new JSONObject(body);
+
+                    JSONArray data = responseJson.getJSONArray("data");
+                    List<String> listPayment = new ArrayList<>();
+                    for (int i = 0; i < data.length(); i++) {
+                        JSONObject obj = data.getJSONObject(i);
+                        listPayment.add(obj.getString("paymentName"));
+                    }
+                    JSONArray paymentArr = new JSONArray(listPayment);
+                    SharedPreferences prefsPayments = getSharedPreferences("APP_PAYMENTS", MODE_PRIVATE);
+                    prefsPayments.edit().putString("payments",paymentArr.toString()).apply();
+
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
     public void getProduct() {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
@@ -145,7 +193,7 @@ public class HomeActivity extends AppCompatActivity {
                                 linear.setOrientation(LinearLayout.VERTICAL);
                                 linear.setGravity(Gravity.CENTER);
 
-                                grid.width = 0;     // px
+                                grid.width = 0;
                                 grid.setMargins(16, 16, 16, 16);
                                 grid.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
 
@@ -159,8 +207,9 @@ public class HomeActivity extends AppCompatActivity {
                                 textImage.setText(optProductName);
                                 textImage.setGravity(Gravity.CENTER);
                                 textImage.setTextSize(12);
+                                textImage.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.black));
                                 textImage.setTypeface(ResourcesCompat.getFont(HomeActivity.this,R.font.inter_semibold));
-                                textImage.setPadding(0,4,0,0);
+                                textImage.setPadding(0,6,0,6);
 
                                 linear.setLayoutParams(grid);
                                 linear.addView(image);
@@ -194,6 +243,7 @@ public class HomeActivity extends AppCompatActivity {
                                     totalPrice.setText(String.format("Total Harga : " + currency));
                                     productQty.setText(String.format("Jumlah : " + qty.get()));
 
+                                    buttonMin.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.white));
                                     buttonMin.setOnClickListener(btn_v -> {
                                         if(qty.get() > 1) {
                                             productQty.setText(String.format("Jumlah : " +  qty.decrementAndGet()));
