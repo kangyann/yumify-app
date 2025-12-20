@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:id="@+id/home">
 
     <LinearLayout
@@ -30,61 +31,67 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-                android:id="@+id/labelSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/home_label_search" />
+                    android:id="@+id/labelSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="@string/home_label_search" />
                 <EditText
                     android:id="@+id/inputSearchProduct"
                     android:layout_width="match_parent"
                     android:layout_marginEnd="8dp"
-                    android:maxWidth="40dp"
                     android:layout_marginTop="4dp"
-                    android:layout_height="38dp"
+                    android:textColor="@color/black"
+                    android:layout_height="36dp"
+                    android:fontFamily="@font/inter_regular"
                     android:hint="@string/home_search_hint"
                     android:importantForAutofill="no"
                     android:ems="10"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:inputType="text"
                     android:background="@drawable/input_border"/>
             </LinearLayout>
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                >
+                android:layout_gravity="bottom">
                 <ImageView
                     android:id="@+id/cartIcon"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
                     android:layout_gravity="bottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:contentDescription="@string/home_cart_image_description"
-                    android:src="@drawable/carticon"/>
+                    android:src="@drawable/carticon" />
 
                 <!-- Icon absolute -->
                 <TextView
                     android:id="@+id/cartIcon_item"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:textAlignment="center"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/inter_semibold"
                     android:textColor="@color/white"
-                    android:background="@drawable/background_rounded"
-                    android:text="1" />
+                    android:background="@drawable/background_rounded" />
             </FrameLayout>
         </LinearLayout>
 
         <include layout="@layout/component_grid_product"/>
 
     </LinearLayout>
+<!--  POPUP CART  -->
     <LinearLayout
         android:id="@+id/popupAddToCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:elevation="10dp"
         android:visibility="gone"
         android:background="@drawable/background_top_radius_border"
         android:paddingHorizontal="24dp"
-        android:paddingVertical="32dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent">
         <TextView
             android:layout_width="match_parent"
@@ -188,7 +195,8 @@
         <Button
             android:id="@+id/popup_addToCart"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:textSize="12sp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/inter_bold"
             android:background="@drawable/button_primary"

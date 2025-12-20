@@ -7,9 +7,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/background_bottom_radius"
-        android:paddingVertical="16dp"
+        android:paddingTop="36dp"
+        android:paddingBottom="16dp"
+        android:gravity="center_vertical"
         android:paddingHorizontal="24dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +27,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:layout_marginStart="8dp"
             android:orientation="vertical"
@@ -45,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:paddingVertical="1dp"
                 android:textSize="14sp"
+                android:fontFamily="@font/inter_regular"
                 android:textColor="@color/white"
                 android:text="@string/home_user_variable" />
         </LinearLayout>
