@@ -18,6 +18,7 @@
         <activity android:name=".HomeActivity"/>
         <activity android:name=".CartActivity"/>
         <activity android:name=".PaymentActivity"/>
+        <activity android:name=".OrderActivity"/>
         <activity android:name=".ProfileActivity"/>
 
         <activity
