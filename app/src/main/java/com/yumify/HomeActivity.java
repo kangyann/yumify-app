@@ -22,6 +22,7 @@ import androidx.gridlayout.widget.GridLayout;
 
 import com.bumptech.glide.Glide;
 import com.yumify.lib.FormatCurrency;
+import com.yumify.lib.GetUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,9 +62,14 @@ public class HomeActivity extends AppCompatActivity {
         popupAddToCart.bringToFront();
         ConstraintLayout Home = findViewById(R.id.home);
 
+        GetUser getUser = new GetUser(HomeActivity.this);
+        JSONObject user = getUser.Load();
+
         // Event Clicked for cartIcon.
         cartIcon.setOnClickListener(v -> {
+            String id = user.optString("id");
             Intent intent = new Intent(HomeActivity.this,CartActivity.class);
+            intent.putExtra("userId", id);
             startActivity(intent);
         });
 
@@ -78,9 +84,7 @@ public class HomeActivity extends AppCompatActivity {
 //        getPayments();
 
         // Get User
-        JSONObject user = LoadUser();
         labelUsername.setText(user.optString("username"));
-
 
         // Event Clicked to Visibility Popup. [FINAL]
         Home.setOnClickListener(v -> {
@@ -323,18 +327,5 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-    public JSONObject LoadUser() {
-        // Get User from Preferences
-        SharedPreferences prefs = getSharedPreferences("APP_AUTH", MODE_PRIVATE);
-        String savedJson = prefs.getString("user", null);
-
-        // Try Compile a Data to JSONObject.
-        try {
-            JSONObject user = new JSONObject(savedJson);
-            return user.optJSONObject("data");
-        }catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

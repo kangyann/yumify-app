@@ -198,6 +198,7 @@
             android:layout_height="40dp"
             android:textSize="12sp"
             android:layout_marginTop="8dp"
+            android:textColor="@color/white"
             android:fontFamily="@font/inter_bold"
             android:background="@drawable/button_primary"
             android:text="@string/home_popup_button_add_product"/>

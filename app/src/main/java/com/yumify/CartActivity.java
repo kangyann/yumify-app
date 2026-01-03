@@ -1,10 +1,9 @@
 package com.yumify;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -19,8 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.OnNewIntentProvider;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
@@ -30,7 +29,6 @@ import com.yumify.lib.FormatCurrency;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,6 +43,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class CartActivity extends AppCompatActivity {
+    private String userId = "";
     private int dp(int value) {
         return (int) (value * getResources().getDisplayMetrics().density);
     }
@@ -192,18 +191,41 @@ public class CartActivity extends AppCompatActivity {
     private void ClickPaymentButton (SharedPreferences prefs,JSONArray products) {
         OkHttpClient client = new OkHttpClient();
         JSONObject bodyRequest = new JSONObject();
+        JSONArray newRequestProduct = new JSONArray();
+        int totalPriceAll = 0;
+        for (int i = 0; i < products.length(); i++) {
+            try {
+                JSONObject c = products.getJSONObject(i);
+                int qty = c.getInt("productQty");
+                int totalPrice = c.getInt("productQty") * c.getInt("productPrice");
+                totalPriceAll = totalPriceAll + totalPrice;
+                JSONObject n = new JSONObject();
+
+                n.put("productName", c.getString("productName"));
+                n.put("productQty", qty);
+                n.put("totalPrice", totalPrice);
+
+                newRequestProduct.put(n);
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
         try {
             bodyRequest.put("paymentName", "QRIS");
-            bodyRequest.put("totalPriceAll",1000);
-            bodyRequest.put("productData", products);
+            bodyRequest.put("userId", Integer.parseInt(userId));
+            bodyRequest.put("totalPriceAll",totalPriceAll);
+            bodyRequest.put("productData", newRequestProduct);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        RequestBody dataRequest = RequestBody.create(bodyRequest.toString(), MediaType.parse("application/json; charset=utf-8"));
-
+        RequestBody dataRequest = RequestBody.create(bodyRequest.toString(),
+                MediaType.parse("application/json; charset=utf-8"));
+        Log.d("TRANSACTIONS : ",bodyRequest.toString());
         Request request = new Request.Builder()
                 .url("https://yumify-api.vercel.app/api/transaction")
                 .post(dataRequest)
+                .addHeader("Content-Type", "application/json")
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
@@ -215,7 +237,7 @@ public class CartActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 String body = response.body().string();
                 if(response.code() != 200) {
-                    Log.d("TRANSACTIONS : ","ERROR");
+                    Log.d("TRANSACTIONS : ","ERROR" + body);
                     return;
                 }
                 Log.d("TRANSACTIONS : ",body);
@@ -243,6 +265,8 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("userId");
         // Integration to Layout by Id
         Button buttonNextPayment = findViewById(R.id.buttonNextPayment);
         Spinner selectionPayment = findViewById(R.id.selectionPayment);
@@ -292,7 +316,23 @@ public class CartActivity extends AppCompatActivity {
                                 CartActivity.this,
                                 android.R.layout.simple_spinner_item,
                                 listPayment
-                        );
+                        ){
+                            @NonNull
+                            @Override
+                            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                                TextView txt = (TextView)super.getDropDownView(position, convertView, parent);
+                                txt.setTextColor(ContextCompat.getColor(CartActivity.this,R.color.black));
+                                return txt;
+                            }
+
+                            @Override
+                            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                                TextView txt = (TextView)super.getDropDownView(position, convertView, parent);
+                                txt.setTextColor(Color.DKGRAY);
+                                return txt;
+                            }
+                        };
+
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         selection.setAdapter(adapter);
                     });

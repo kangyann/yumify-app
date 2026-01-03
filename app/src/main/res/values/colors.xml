@@ -4,4 +4,6 @@
     <color name="white">#F5F5F5</color>
     <color name="secondary">#C9E5CD</color>
     <color name="primary">#056915</color>
+    <color name="warning">#979C43</color>
+    <color name="error">#B33809</color>
 </resources>

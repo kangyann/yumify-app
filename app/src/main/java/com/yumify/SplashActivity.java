@@ -68,7 +68,6 @@ public class SplashActivity extends AppCompatActivity {
 
         /* Custom Flag and Language by Country */
         String country = Locale.getDefault().getCountry();
-        Log.d("COUNTY =>", country);
         CustomFlagCountry(country, findViewById(R.id.iconLocation),findViewById(R.id.textLocation));
 
         /* Delay by Times as a SplashScreen */

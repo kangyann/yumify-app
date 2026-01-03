@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent">
 <!--    Header      -->
     <LinearLayout
@@ -22,6 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:text="Riwayat Pesanan"
             android:textAlignment="center" />
     </LinearLayout>
@@ -33,42 +35,29 @@
         android:layout_marginVertical="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/border_bottom">
+        android:orientation="vertical">
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginHorizontal="4dp"
             android:textAlignment="center"
             android:padding="8dp"
             android:textSize="12sp"
+            android:textColor="@color/black"
             android:fontFamily="@font/inter_regular"
             android:background="@drawable/border_bottom"
             android:text="Semua"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="4dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:padding="8dp"
-            android:textSize="12sp"
+        <Button
+            android:id="@+id/button"
+            android:layout_marginVertical="6dp"
+            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:layout_height="40dp"
             android:fontFamily="@font/inter_regular"
-            android:background="@drawable/border_bottom"
-            android:text="Diproses"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="4dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:padding="8dp"
-            android:textSize="12sp"
-            android:fontFamily="@font/inter_regular"
-            android:background="@drawable/border_bottom"
-            android:text="Selesai"/>
+            android:background="@drawable/button_primary"
+            android:text="Refresh Order" />
     </LinearLayout>
+
     <ScrollView
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/orderListMenu"
@@ -76,427 +65,93 @@
         android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
+        android:layout_marginHorizontal="16dp"
         android:paddingVertical="8dp">
+
         <LinearLayout
+            android:id="@+id/LayoutOrderList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!--        Card Product    -->
+            <ProgressBar
+                android:id="@+id/LayoutOrderListProgress"
+                android:layout_marginTop="24dp"
+                android:paddingVertical="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:visibility="gone"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:orientation="vertical">-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginVertical="1dp"-->
+<!--                    android:text="Order ID: TRX 0000"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_marginVertical="1dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Date : 2025 - 20 - 12"/>-->
+<!--                    Products Details        -->
+<!--                <LinearLayout-->
+<!--                    android:background="@drawable/input_border"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_margin="6dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:background="@drawable/border_bottom"-->
+<!--                        android:paddingVertical="6dp"-->
+<!--                        android:gravity="start"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="48dp"-->
+<!--                            android:layout_height="48dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:src="@drawable/user"/>-->
+<!--                        &lt;!&ndash;   Name Product    &ndash;&gt;-->
+<!--                        <LinearLayout-->
+<!--                            android:layout_marginHorizontal="4dp"-->
+<!--                            android:paddingHorizontal="8dp"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:layout_height="wrap_content">-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:fontFamily="@font/inter_semibold"-->
+<!--                                android:text="Nasi Goreng"/>-->
+<!--                            <TextView-->
+<!--                                android:layout_marginTop="8dp"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Qty: 1"/>-->
+<!--                        </LinearLayout>-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Rp. 100.000,00"/>-->
+<!--                    </LinearLayout>-->
+<!--                    &lt;!&ndash;            Status Order    &ndash;&gt;-->
+<!--                    <TextView-->
+<!--                        android:padding="6dp"-->
+<!--                        android:fontFamily="@font/inter_medium"-->
+<!--                        android:textColor="@color/primary"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:textAlignment="textStart"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Selesai"/>-->
+<!--                </LinearLayout>-->
+<!--&lt;!&ndash;                End Products Details &ndash;&gt;-->
 
-            <LinearLayout
-                android:background="@drawable/input_border"
-                android:orientation="vertical"
-                android:layout_marginBottom="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <!--            Product Details     -->
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/border_bottom"
-                    android:paddingVertical="12dp"
-                    android:gravity="start"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/user"/>
-                    <!--                Name Product    -->
-                    <LinearLayout
-                        android:layout_marginHorizontal="4dp"
-                        android:paddingHorizontal="8dp"
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nasi Goreng"/>
-                        <TextView
-                            android:layout_marginTop="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Qty: 1"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rp. 100.000,00"/>
-                </LinearLayout>
-                <!--            Status Order    -->
-                <LinearLayout
-                    android:layout_marginVertical="12dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:padding="4dp"
-                        android:fontFamily="@font/inter_medium"
-                        android:textColor="@color/primary"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="textStart"
-                        android:layout_height="wrap_content"
-                        android:text="Selesai"/>
-                    <TextView
-                        android:padding="4dp"
-                        android:fontFamily="@font/inter_regular"
-                        android:textColor="@color/secondary"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="textEnd"
-                        android:layout_height="wrap_content"
-                        android:text="January 23, 2025"/>
-                </LinearLayout>
-            </LinearLayout>
-<!--            -->
-            <LinearLayout
-                android:background="@drawable/input_border"
-                android:orientation="vertical"
-                android:layout_marginBottom="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <!--            Product Details     -->
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/border_bottom"
-                    android:paddingVertical="12dp"
-                    android:gravity="start"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/user"/>
-                    <!--                Name Product    -->
-                    <LinearLayout
-                        android:layout_marginHorizontal="4dp"
-                        android:paddingHorizontal="8dp"
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nasi Goreng"/>
-                        <TextView
-                            android:layout_marginTop="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Qty: 1"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rp. 100.000,00"/>
-                </LinearLayout>
-                <!--            Status Order    -->
-                <LinearLayout
-                    android:layout_marginVertical="12dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:padding="4dp"
-                        android:fontFamily="@font/inter_medium"
-                        android:textColor="@color/primary"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="textStart"
-                        android:layout_height="wrap_content"
-                        android:text="Selesai"/>
-                    <TextView
-                        android:padding="4dp"
-                        android:fontFamily="@font/inter_regular"
-                        android:textColor="@color/secondary"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="textEnd"
-                        android:layout_height="wrap_content"
-                        android:text="January 23, 2025"/>
-                </LinearLayout>
-            </LinearLayout>
-<!--            -->
-            <LinearLayout
-                android:background="@drawable/input_border"
-                android:orientation="vertical"
-                android:layout_marginBottom="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <!--            Product Details     -->
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/border_bottom"
-                    android:paddingVertical="12dp"
-                    android:gravity="start"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/user"/>
-                    <!--                Name Product    -->
-                    <LinearLayout
-                        android:layout_marginHorizontal="4dp"
-                        android:paddingHorizontal="8dp"
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nasi Goreng"/>
-                        <TextView
-                            android:layout_marginTop="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Qty: 1"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rp. 100.000,00"/>
-                </LinearLayout>
-                <!--            Status Order    -->
-                <LinearLayout
-                    android:layout_marginVertical="12dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:padding="4dp"
-                        android:fontFamily="@font/inter_medium"
-                        android:textColor="@color/primary"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="textStart"
-                        android:layout_height="wrap_content"
-                        android:text="Selesai"/>
-                    <TextView
-                        android:padding="4dp"
-                        android:fontFamily="@font/inter_regular"
-                        android:textColor="@color/secondary"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="textEnd"
-                        android:layout_height="wrap_content"
-                        android:text="January 23, 2025"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:background="@drawable/input_border"
-                android:orientation="vertical"
-                android:layout_marginBottom="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <!--            Product Details     -->
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/border_bottom"
-                    android:paddingVertical="12dp"
-                    android:gravity="start"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/user"/>
-                    <!--                Name Product    -->
-                    <LinearLayout
-                        android:layout_marginHorizontal="4dp"
-                        android:paddingHorizontal="8dp"
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nasi Goreng"/>
-                        <TextView
-                            android:layout_marginTop="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Qty: 1"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rp. 100.000,00"/>
-                </LinearLayout>
-                <!--            Status Order    -->
-                <LinearLayout
-                    android:layout_marginVertical="12dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:padding="4dp"
-                        android:fontFamily="@font/inter_medium"
-                        android:textColor="@color/primary"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="textStart"
-                        android:layout_height="wrap_content"
-                        android:text="Selesai"/>
-                    <TextView
-                        android:padding="4dp"
-                        android:fontFamily="@font/inter_regular"
-                        android:textColor="@color/secondary"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="textEnd"
-                        android:layout_height="wrap_content"
-                        android:text="January 23, 2025"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:background="@drawable/input_border"
-                android:orientation="vertical"
-                android:layout_marginBottom="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <!--            Product Details     -->
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/border_bottom"
-                    android:paddingVertical="12dp"
-                    android:gravity="start"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/user"/>
-                    <!--                Name Product    -->
-                    <LinearLayout
-                        android:layout_marginHorizontal="4dp"
-                        android:paddingHorizontal="8dp"
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nasi Goreng"/>
-                        <TextView
-                            android:layout_marginTop="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Qty: 1"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rp. 100.000,00"/>
-                </LinearLayout>
-                <!--            Status Order    -->
-                <LinearLayout
-                    android:layout_marginVertical="12dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:padding="4dp"
-                        android:fontFamily="@font/inter_medium"
-                        android:textColor="@color/primary"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="textStart"
-                        android:layout_height="wrap_content"
-                        android:text="Selesai"/>
-                    <TextView
-                        android:padding="4dp"
-                        android:fontFamily="@font/inter_regular"
-                        android:textColor="@color/secondary"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="textEnd"
-                        android:layout_height="wrap_content"
-                        android:text="January 23, 2025"/>
-                </LinearLayout>
-            </LinearLayout>
-<!--            -->
-            <LinearLayout
-                android:background="@drawable/input_border"
-                android:orientation="vertical"
-                android:layout_marginBottom="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <!--            Product Details     -->
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/border_bottom"
-                    android:paddingVertical="12dp"
-                    android:gravity="start"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/user"/>
-                    <!--                Name Product    -->
-                    <LinearLayout
-                        android:layout_marginHorizontal="4dp"
-                        android:paddingHorizontal="8dp"
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nasi Goreng"/>
-                        <TextView
-                            android:layout_marginTop="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Qty: 1"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rp. 100.000,00"/>
-                </LinearLayout>
-                <!--            Status Order    -->
-                <LinearLayout
-                    android:layout_marginVertical="12dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:padding="4dp"
-                        android:fontFamily="@font/inter_medium"
-                        android:textColor="@color/primary"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="textStart"
-                        android:layout_height="wrap_content"
-                        android:text="Selesai"/>
-                    <TextView
-                        android:padding="4dp"
-                        android:fontFamily="@font/inter_regular"
-                        android:textColor="@color/secondary"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="textEnd"
-                        android:layout_height="wrap_content"
-                        android:text="January 23, 2025"/>
-                </LinearLayout>
-            </LinearLayout>
-            <!--    End  Card   -->
-
+<!--            </LinearLayout>-->
+<!--&lt;!&ndash;                End Card Information &ndash;&gt;-->
         </LinearLayout>
 
     </ScrollView>

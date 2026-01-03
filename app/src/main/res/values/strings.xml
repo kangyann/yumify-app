@@ -46,4 +46,21 @@
         <item>BCA VA</item>
         <item>MANDIRI VA</item>
     </string-array>
+
+    <!--  PAYMENTS PAGE  -->
+    <string name="payment_title">Pembayaran</string>
+    <string name="payment_description">Lakukan pembayaran anda segera untuk menyelesaikan pesanan.</string>
+    <string name="payment_box_description">Scan Kode QRIS Berikut untuk melakukan pembayaran</string>
+
+
+    <string name="payment_box_total">Total Harga : </string>
+    <string name="payment_box_button">Refresh Pembayaran</string>
+    <string name="payment_box_order_id">Order ID : </string>
+    <string name="payment_status_settlement">Pembayaran Berhasil</string>
+    <string name="payment_status_pending">Menunggu Pembayaran</string>
+    <string name="payment_status_error">Pembayaran Gagal</string>
+
+    <string name="payment_footer_description">Otomatis diperbarui jika pembayaran telah dilakukana ataupun tidak.</string>
+    <string name="payment_status_settlement_desc">Terimakasih telah melakukan Pembayaran. Pesanan anda akan segera diproses.</string>
+    <string name="payment_status_error_desc">Pembayaran sudah tidak berlaku atau kadaluarsa. Silahkan melakukan pesanan kembali..</string>
 </resources>
